@@ -16,7 +16,7 @@ class Header extends Component {
     console.log('component will unmount')
   }
   render () {
-    console.log('render')
+    // console.log('render')
     return (
       <div>
         <h1 className='title'>React 小书</h1>
@@ -42,19 +42,28 @@ class Clock extends Component {
   }
   render () {
     console.log('render')
+    console.log(this.props)
     return (
       <div>
         {this.state.date.toLocaleTimeString()}
-        <span>{this.props.text}</span>
+        <div dangerouslySetInnerHTML={{ __html: this.props.text }} style={{ fontSize: '12px', color: 'red' }}></div>
+        {this.props.children}
       </div>
     )
   }
 }
+const getDefaultStyledPost = (defaultStyle) => {
+  /* TODO */
+  return props => {
+    return <p style={{ ...defaultStyle, ...props.style }}>p</p>
+  }
+}
+var Post = getDefaultStyledPost({ color: 'red' })
 class Test extends Component {
   constructor() {
     super()
     this.state = {
-      text: <h3>123</h3>,
+      text: '<h3>123</h3>',
       isShowHeader: true
     }
   }
@@ -68,11 +77,16 @@ class Test extends Component {
   render () {
     return (
       <div>
-        {/* {this.state.isShowHeader ? <Clock></Clock> : null} */}
-        <Clock text={this.state.text}></Clock>
-        <button onClick={this.handleShowOrHide.bind(this)}>
+        {/* {this.state.isShowHeader ? <Clock /> : null} */}
+        {/* <button onClick={this.handleShowOrHide.bind(this)}>
           显示或者隐藏标题
-        </button>
+        </button> */}
+        <Clock text={this.state.text}>
+          <h3>hello world</h3>
+          <h4>hello world</h4>
+          hello world
+        </Clock>
+        <Post style={{ fontSize: '20px' }} />
       </div>
     )
   }
