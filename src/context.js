@@ -18,11 +18,11 @@ class Index extends Component {
   constructor() {
     super()
     this.state = { themeColor: 'red' }
-    // setTimeout(() => {
-    //   this.setState({
-    //     themeColor: 'blue'
-    //   })
-    // }, 2000)
+    setTimeout(() => {
+      this.setState({
+        themeColor: 'blue'
+      })
+    }, 2000)
   }
   getChildContext () {
     return {
@@ -66,7 +66,10 @@ class Title extends Component {
     themeColor: PropTypes.string
   }
   handleClick () {
-    console.log(123)
+    this.context.themeColor = 'blue'
+    console.log(this.context)
+  }
+  componentDidMount () {
     // this.context.themeColor = 'blue'
   }
   render () {

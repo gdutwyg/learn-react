@@ -16,7 +16,7 @@ class CommentInput extends Component {
     this._loadUsername()
   }
   _loadUsername () {
-    const username = localStorage.getItem('username')
+    const username = localStorage.getItem('username') || ''
     this.setState({
       username
     })

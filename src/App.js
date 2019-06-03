@@ -4,12 +4,14 @@ import React, { Component } from 'react';
 // import LessonList from './LessonList/'
 // import Test from './Test'
 import CommentApp from './Comment/CommentApp'
+import ReactRedux from './react-redux/'
 class App extends Component {
   render () {
     return (
       <div className="App">
         {/* <LessonList /> */}
-        <CommentApp></CommentApp>
+        {/* <CommentApp /> */}
+        <ReactRedux />
         {/* <Test /> */}
       </div>
     );
