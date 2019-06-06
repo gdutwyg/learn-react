@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import propTypes from 'prop-types'
 import Header from './Header'
 import Content from './Content'
+import { Provider } from './react-redux'
 function createStore (reducer) {
   let state
   let listeners = []
@@ -35,10 +36,12 @@ class Index extends Component {
   }
   render () {
     return (
-      <div>
-        <Header />
-        <Content />
-      </div>
+      <Provider store={store}>
+        <div>
+          <Header />
+          <Content />
+        </div>
+      </Provider>
     )
   }
 }
